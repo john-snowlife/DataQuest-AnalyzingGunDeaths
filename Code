@@ -1,0 +1,46 @@
+import csv
+
+with open("guns.csv", "r") as f:
+    reader = csv.reader(f)
+    data = list(reader)
+
+headers = data[:1]
+data = data[1:]
+print(headers)
+print(data[0:5])
+
+years = [death[1] for death in data]
+print(set(years))
+year_counts = {}
+for year in years:
+    if year not in year_counts:
+        year_counts[year] = 0
+    year_counts[year] += 1
+print(year_counts)
+
+import datetime as dt
+dates = [dt.datetime(year = int(row[1]), month = int(row[2]), day = 1) for row in data]
+dates[0:5]
+
+date_counts = {}
+for date in dates:
+    if date not in date_counts:
+        date_counts[date] = 0
+    date_counts[date] += 1
+    
+date_counts
+
+sex_counts = {}
+for row in data:
+    if row[5] not in sex_counts:
+        sex_counts[row[5]] = 0
+    sex_counts[row[5]] += 1 
+sex_counts
+
+race_counts = {}
+for row in data:
+    if row[7] not in race_counts:
+        race_counts[row[7]] = 0
+    race_counts[row[7]] +=1 
+print(race_counts)
+print(sex_counts)
