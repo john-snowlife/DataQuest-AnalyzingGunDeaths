@@ -75,3 +75,24 @@ homicide_race_counts_per100k = {}
 for key, value in homicide_race_counts.items():
     homicide_race_counts_per100k[key] = homicide_race_counts[key] / mapping[key] *100000
 homicide_race_counts_per100k
+
+##Discover whether women constitute different proportions of gun deaths in different races.
+sexes = [row[5] for row in data]
+races_women_count = {}
+for i, key in enumerate(races):
+    if key not in races_women_count:
+        races_women_count[key] = 0
+    if sexes[i] == "F":
+        races_women_count[key] +=1 
+races_women_count
+
+races_women_count_pct = {}
+for key, value in races_women_count.items():
+    races_women_count_pct[key] = races_women_count[key] / race_counts[key]
+races_women_count_pct
+##{'Asian/Pacific Islander': 0.18401206636500755,
+ 'Black': 0.09950206043956043,
+ 'Hispanic': 0.11893150077588117,
+ 'Native American/Native Alaskan': 0.13849509269356597,
+ 'White': 0.16134486767214698}
+ ## Death of women by guns varies between 10% and 20% by race. 
