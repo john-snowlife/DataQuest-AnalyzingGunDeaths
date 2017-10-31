@@ -96,3 +96,13 @@ races_women_count_pct
  'Native American/Native Alaskan': 0.13849509269356597,
  'White': 0.16134486767214698}
  ## Death of women by guns varies between 10% and 20% by race. 
+ 
+ months = [row[2] for row in data]
+homicide_months_count = {}
+for i, month in enumerate(months):
+    if month not in homicide_months_count:
+        homicide_months_count[month] = 0
+    if intents[i] == "Homicide":
+        homicide_months_count[month] += 1
+homicide_months_count
+## February has the fewest homicides. Homicides appear to increase over the holiday periods peaking in July and December.
